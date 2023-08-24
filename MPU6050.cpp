@@ -166,6 +166,10 @@ void MPU6050::_update() { //Main update function - runs continuously
 			_gyro_angle[2] = 0;
 		}
 
+		for (int i = 0; i <= 2; i++) {
+			_angle[i] = _gyro_angle[i];
+		}
+
 		clock_gettime(CLOCK_REALTIME, &end); //Save time to end clock
 		dt = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9; //Calculate new dt
 		clock_gettime(CLOCK_REALTIME, &start); //Save time to start clock
